@@ -21,7 +21,6 @@ import java.util.ArrayList;
 
 public class Gallerysample extends Activity {
 
-//    GridView gallery;
     RecyclerView gallery;
     private ArrayList<Album> images;
 
@@ -66,17 +65,6 @@ public class Gallerysample extends Activity {
 
         }));
 
-
-//        gallery.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//
-//            @Override
-//            public void onItemClick(AdapterView<?> arg0, View arg1, int position, long arg3) {
-//                if (null != images && !images.isEmpty())
-//                    Toast.makeText(getApplicationContext(), "position " + position + " " + images.get(position), Toast.LENGTH_LONG).show();
-//            }
-//        });
-
-
     }
 
 
@@ -116,7 +104,6 @@ public class Gallerysample extends Activity {
                 listOfAllImages.add(new Album(absolutePathOfImage,imageName));
             }
         }
-
 
         return listOfAllImages;
     }
