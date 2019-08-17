@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.gallerysample.GlideConnector;
+import com.example.gallerysample.genericclasses.GlideConnector;
 import com.example.gallerysample.R;
 import com.example.gallerysample.model.Album;
 
@@ -36,9 +36,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
         holder.imageName.setText(images.get(i).getImageName());
         holder.image.setScaleType(ImageView.ScaleType.CENTER_CROP);
         GlideConnector.getInstance().loadImageDirectlyWithoutThumbnail(activity, images.get(i).getImagePath(), holder.image);
-
-        //        Glide.with(activity).load(images.get(i).getImagePath()).into(holder.image);
-//        GlideConnector.getInstance().loadImageDirectlyWithSize(activity, images.get(i).getImagePath(), holder.image,350,300);
     }
 
     @Override
@@ -52,7 +49,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
         ImageView image;
         TextView imageName;
 
-        public GalleryViewHolder(View itemView) {
+        GalleryViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.image);
             imageName = itemView.findViewById(R.id.imageName);
