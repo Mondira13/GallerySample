@@ -61,13 +61,17 @@ class GallerySampleActivity : AppCompatActivity() {
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int, motionEvent: MotionEvent) {
 
-                        val intent = Intent(this@GallerySampleActivity, ViewImageActivity::class.java)
-                        intent.putExtra("imageUrl", images?.get(position)?.imagePath)
-                        startActivity(intent)
+//                        val intent = Intent(this@GallerySampleActivity, ViewImageActivity::class.java)
+//                        intent.putExtra("imageUrl", images?.get(position)?.imagePath)
+//                        startActivity(intent)
                         //                Toast.makeText(getApplicationContext(), "position " + position + " " + images.get(position), Toast.LENGTH_LONG).show();
                     }
 
-                    override fun onLongItemClick(view: View, position: Int) {}
+                    override fun onLongItemClick(view: View, position: Int) {
+                        val intent = Intent(this@GallerySampleActivity, ViewImageActivity::class.java)
+                        intent.putExtra("imageUrl", images?.get(position)?.imagePath)
+                        startActivity(intent)
+                    }
 
                 })
         )
