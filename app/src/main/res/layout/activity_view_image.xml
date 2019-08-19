@@ -9,12 +9,12 @@
         tools:context=".ViewImageActivity">
 
 
-    <ImageView
-            android:id="@+id/ViewImage"
-            android:layout_width="320dp"
-            android:layout_height="320dp"
-            android:src="@drawable/ic_launcher_background"
-            android:layout_centerInParent="true"
-            />
+    <!--<ImageView-->
+            <!--android:id="@+id/ViewImage"-->
+            <!--android:layout_width="320dp"-->
+            <!--android:layout_height="320dp"-->
+            <!--android:src="@drawable/ic_launcher_background"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--/>-->
 
 </RelativeLayout>
