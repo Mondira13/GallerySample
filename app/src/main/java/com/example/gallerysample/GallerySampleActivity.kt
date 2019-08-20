@@ -3,6 +3,7 @@ package com.example.gallerysample
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
@@ -16,7 +17,10 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.MotionEvent
 import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import com.example.gallerysample.adapter.GalleryAdapter
+import com.example.gallerysample.genericclasses.GlideConnector
 import com.example.gallerysample.genericclasses.RecyclerItemClickListener
 import com.example.gallerysample.model.Album
 import java.util.ArrayList
@@ -60,22 +64,28 @@ class GallerySampleActivity : AppCompatActivity() {
                 gallery,
                 object : RecyclerItemClickListener.OnItemClickListener {
                     override fun onItemClick(view: View, position: Int, motionEvent: MotionEvent) {
-//                        val intent = Intent(this@GallerySampleActivity, ViewImageActivity::class.java)
-//                        intent.putExtra("imageUrl", images?.get(position)?.imagePath)
-//                        startActivity(intent)
-//                        Toast.makeText(getApplicationContext(), "position " + position + " " + images.get(position), Toast.LENGTH_LONG).show();
+                        openAlertDialog(images?.get(position)?.imageName,images?.get(position)?.imagePath)
                     }
 
                     override fun onLongItemClick(view: View, position: Int) {
-                        val intent = Intent(this@GallerySampleActivity, ViewImageActivity::class.java)
-                        intent.putExtra("imageUrl", images?.get(position)?.imagePath)
-                        intent.putExtra("imageName", images?.get(position)?.imageName)
-                        startActivity(intent)
+                        openAlertDialog(images?.get(position)?.imageName,images?.get(position)?.imagePath)
                     }
 
                 })
         )
 
+    }
+
+    private fun openAlertDialog(name: String?, imagePath: String?) {
+        val inflater = layoutInflater
+        val dialoglayoutView = inflater.inflate(R.layout.alert_dialog_layout, null)
+        val builder = AlertDialog.Builder(this)
+        builder.setView(dialoglayoutView)
+        val imageview = dialoglayoutView.findViewById<ImageView>(R.id.ViewImage)
+        val imageName = dialoglayoutView.findViewById<TextView>(R.id.name)
+        GlideConnector.getInstance().loadImageDirectlyWithoutThumbnail(this, imagePath, imageview)
+        imageName.setText(name)
+        builder.show()
     }
 
 
