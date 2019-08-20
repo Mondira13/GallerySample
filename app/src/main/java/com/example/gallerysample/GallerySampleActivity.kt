@@ -52,7 +52,7 @@ class GallerySampleActivity : AppCompatActivity() {
         images = getAllShownImagesPath(this)
         val gridLayoutManager = GridLayoutManager(applicationContext, 2)
         gallery.layoutManager = gridLayoutManager
-        gallery.adapter = GalleryAdapter(this, images)
+        gallery.adapter = GalleryAdapter(this, images!!)
         setGalleryItemClickListener()
     }
 
